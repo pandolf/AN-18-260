@@ -1,0 +1,250 @@
+\documentclass{cmspaper}
+%\usepackage[pdftex]{graphics}
+\usepackage{epsfig}
+\usepackage[outdir=./Figures/Converted/,suffix=-converted]{epstopdf}
+\usepackage[usenames]{color}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{here}
+%comment the following lines to delete the draft text
+%\usepackage{eso-pic}                                                            
+%\AddToShipoutPicture{\resizebox{1\pdfpagewidth}{0.8\pdfpageheight}%           
+%{\rotatebox{60}{\color[gray]{0.8}\hspace*{5mm}\textsc{DRAFT}}}}
+%%%
+\usepackage[font=small,format=plain,labelfont=bf,margin=0.05\columnwidth]{caption}
+\usepackage{shortvrb,rotating}
+\usepackage{subfigure}
+\usepackage{booktabs}%tabelle
+\usepackage[section,above]{placeins}%FloatBarrier in each section. Can go above, not below
+\graphicspath{ {./Figures/},{./Figures/Converted} }
+% Roerto macros
+\newcommand{\qu}{u}
+\newcommand{\qd}{d}
+\newcommand{\qubar}{\bar u}
+\newcommand{\qdbar}{\bar d}
+\newcommand{\bfig}{\begin{center}\begin{picture}}
+\newcommand{\efig}[1]{\end{picture}\\{\small #1}\end{center}}
+\newcommand{\flin}[2]{\ArrowLine(#1)(#2)}
+\newcommand{\wlin}[2]{\DashLine(#1)(#2){2.5}}
+\newcommand{\zlin}[2]{\DashLine(#1)(#2){5}}
+\newcommand{\glin}[3]{\Photon(#1)(#2){2}{#3}}
+\newcommand{\lin}[2]{\Line(#1)(#2)}
+\newcommand{\noi}{\noindent}
+\newcommand{\sof}{\SetOffset}
+\newcommand{\bmip}[2]{\begin{minipage}[t]{#1pt}\bfig(#1,#2)}
+\newcommand{\emip}[1]{\efig{#1}\end{minipage}}
+\newcommand{\putk}[2]{\Text(#1)[r]{$p_{#2}$}}
+\newcommand{\putp}[2]{\Text(#1)[l]{$p_{#2}$}}
+\newcommand{\bq}{\begin{equation}}
+\newcommand{\eq}{\end{equation}}
+\newcommand{\bqa}{\begin{eqnarray}}\newcommand{\eqa}{\end{eqnarray}}
+\newcommand{\nl}{\nonumber \\}
+\newcommand{\eqn}[1]{Eq. (\ref{#1})}
+\newcommand{\eqs}[1]{eqs. (\ref{#1})}
+\newcommand{\ibidem}{{\it ibidem\/},}
+\newcommand{\vpb}{}
+\newcommand{\p}[1]{{\scriptstyle{\,(#1)}}}
+\newcommand{\gev}{\mbox{GeV}}
+\newcommand{\tev}{\mbox{TeV}}
+\newcommand{\mev}{\mbox{MeV}}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+% MLM's macros
+\def    \eqnum          #1{(\ref{#1})}       %equation # in round parenthesis
+\def    \scite          #1{$^{\cite{#1}}$}     %superscript biblio ref
+
+  \newcommand{\ccaption}[2]{
+    \begin{center}
+    \parbox{0.85\textwidth}{
+      \caption[#1]{\small{{#2}}}
+      }
+    \end{center}
+    }
+\newcommand{\BS}{\bigskip}
+% MATH SYMBOLS
+\def    \be             {\begin{equation}}
+\def    \ee             {\end{equation}}
+\def    \ba             {\begin{eqnarray}}
+\def    \ea             {\end{eqnarray}}
+\def    \nn             {\nonumber}
+\def    \=              {\;=\;}
+\def    \frac           #1#2{{#1 \over #2}}
+\def    \ret            {\\[\eqskip]}
+\def    \ie             {{\em i.e.\/} }
+\def    \eg             {{\em e.g.\/} }
+\def   \apr       {{\em a priori} }
+\def   \apo      {{\em a posteriori} }
+%\def \lsim{\mathrel{\vcenter
+%     {\hbox{$<$}\nointerlineskip\hbox{$\sim$}}}}
+%\def \gtrsim{\mathrel{\vcenter
+%     {\hbox{$>$}\nointerlineskip\hbox{$\sim$}}}}
+\def    \bentarrow      {\:\raisebox{1.1ex}{\rlap{$\vert$}}\!\rightarrow}
+\def    \rd             {{\mathrm d}}    
+\def    \Im             {{\mathrm{Im}}}  
+\def    \bra#1          {\mbox{$\langle #1 |$}}
+\def    \ket#1          {\mbox{$| #1 \rangle$}}
+
+% UNITS                 
+\def    \kev            {\mbox{$\mathrm{keV}$}}
+\def    \mev            {\mbox{$\mathrm{MeV}$}}
+\def    \gev            {\mbox{$\mathrm{GeV}$}}
+
+% PARTICLE SYMBOLS
+\def    \nubar   {\bar{\nu}}
+\def    \ubar   {\bar{u}}
+\def    \dbar   {\bar{d}}
+\def    \qbar   {\bar{q}}
+\def    \bbar   {\bar{b}}
+\def    \cbar   {\bar{c}}
+\def    \cpbar   {\bar{c}'}
+\def    \tbar   {\bar{t}}
+\def    \Qbar   {\overline{Q}}
+
+% KINEMATICAL VARIABLES 
+\def    \mq             {\mbox{$m_Q$}}  
+\def    \mZ             {\mbox{$m_Z$} }
+\def    \mZsq             {\mbox{$m_Z^2$} }
+\def    \mW             {\mbox{$m_W$} }
+\def    \mWsq             {\mbox{$m_W^2$} }
+\def    \mH             {\mbox{$m_H$} }
+\def    \mHsq             {\mbox{$m_H^2$} }
+\def    \mt             {\mbox{$m_t$}}  
+\def    \mtsq             {\mbox{$m_t^2$}}  
+\def    \mb             {\mbox{$m_b$}}  
+\def    \mbsq             {\mbox{$m_b^2$}}  
+\def    \mqq            {\mbox{$m_{Q\bar Q}$}}
+\def    \mqqsq          {\mbox{$m^2_{Q\bar Q}$}}
+\def    \pt             {\mbox{$p_T$}}
+\def    \et             {\mbox{$E_T$}}
+\def    \xt             {\mbox{$x_T$}}
+\def    \xtsq           {\mbox{$x_T^2$}}
+\def    \ptsq           {\mbox{$p^2_T$}}
+\def    \ptbsq           {\mbox{$p^2_{T,b}$}}
+\def    \ptbbsq           {\mbox{$p^2_{T,\bar{b}}$}}
+\def    \ptWsq           {\mbox{$p^2_{T,W}$}}
+\def    \ptZsq           {\mbox{$p^2_{T,Z}$}}
+\def    \mT             {\mbox{$m_T$}}
+\def    \mTsq           {\mbox{$m^2_T$}}
+\def    \etsq           {\mbox{$E^2_T$}}
+        
+% QCD PARAMETERS                                      
+\newcommand     \MSB            {\ifmmode {\overline{\rm MS}} \else 
+                                 $\overline{\rm MS}$  \fi}
+\def    \muf            {\mbox{$\mu_{\rm F}$}}
+\def    \mug            {\mbox{$\mu_\gamma$}}
+\def    \mufsq          {\mbox{$\mu^2_{\rm F}$}}
+\def    \mur            {{\mbox{$\mu_{\rm R}$}}}
+\def    \mursq          {\mbox{$\mu^2_{\rm R}$}}
+\def    \mul            {{\mu_\Lambda}}
+\def    \mulsq          {\mbox{$\mu^2_\Lambda$}}
+
+\def    \bzero          {\mbox{$b_0$}}
+\def    \as             {\ifmmode \alpha_s \else $\alpha_s$ \fi}
+\def    \aem             {\mbox{$\alpha_{em}(\mZ)$}}
+\def    \asb            {\mbox{$\alpha_s^{(b)}$}}
+\def    \assq           {\mbox{$\alpha_s^2$}}
+\def \oacube {\mbox{$ {\cal O}(\alpha_s^3)$}}
+\def \oaemacube {\mbox{$ {\cal O}(\alpha\alpha_s^3)$}}
+\def \oafour {\mbox{$ {\cal O} (\alpha_s^4)$}}
+\def \oatwo {\mbox{$ {\cal O} (\alpha_s^2)$}}
+\def \oaematwo {\mbox{$ {\cal O}(\alpha \alpha_s^2)$}}
+\def \oaemas {\mbox{$ {\cal O}(\alpha \alpha_s)$}} 
+\def \oas   {\mbox{$ {\cal O}(\alpha_s)$}}
+\def\slash#1{{#1\!\!\!/}}
+\def\rt1{\raisebox{-1ex}{\rlap{$\; \rho \to 1 \;\;$}}
+\raisebox{.4ex}{$\;\; \;\;\simeq \;\;\;\;$}}
+\def\ltap{\raisebox{-.5ex}{\rlap{$\,\sim\,$}} \raisebox{.5ex}{$\,<\,$}}
+\def\gtap{\raisebox{-.5ex}{\rlap{$\,\sim\,$}} \raisebox{.5ex}{$\,>\,$}} 
+
+\newcommand\LambdaQCD{\Lambda_{\scriptscriptstyle \rm QCD}}
+\def\naive{na\"{\i}ve}
+\def\asp{{\alpha_s}\over{\pi}}
+\def\half{\frac{1}{2}}
+\def\herwig{{\small HERWIG}}
+\def\isajet{{\small ISAJET}}
+\def\pythia{{\small PYTHIA}}
+\def\grace{{\small GRACE}}
+\def\amegic{{\small AMEGIC++}}
+\def\vecbos{{\small VECBOS}}
+\def\madgraph{{\small MADGRAPH}}
+\def\comphep{{\small CompHEP}}
+\def\ALPHA{{\small ALPHA}}
+\def\ALPGEN{{\small ALPGEN}}
+\def\SHERPA{{\small SHERPA}}
+\def\ppbar{\mbox{$p \bar{p}$}}
+\def\met{$\rlap{\kern.2em/}E_T$}
+
+%PtD
+\def    \ptd             {\mbox{$P_\mathrm{T}D$ }}
+
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%\MakeShortVerb{\|}
+%%%%%%%%%%%%%%%%%%%%%%%% DEFINITIONS
+\renewcommand{\arraystretch}{1.7}
+%%%%%%%%%%%%%%%%%%%%%%%% TITLE PAGE
+%==============================================================================
+% title page for few authors
+
+\begin{titlepage}
+\analysisnote{2018/260} 
+\today ~{\bf DRAFT}
+\boldmath \title{
+Performance Studies of LYSO Crystal Bars\\for the Barrel Timing Detector:\\
+Results from the CERN H4 Test Beam} \unboldmath
+
+\begin{Authlist}
+Samuele Torelli, Raffaella Tramontano, Daniele del Re, Francesco Santanastasio
+\Instfoot{roma1}{ ``Sapienza'' Universit\`{a} di Roma e INFN Sezione di Roma, Rome, Italy}
+Paolo Meridiani, Francesco Pandolfi, Chiara Rovelli
+\Instfoot{infn}{INFN Sezione di Roma, Rome, Italy}
+\end{Authlist}
+
+% Authorlist:
+% Primary authors 
+% will be those who thought and worked on the topic significanlty and wrote
+% the note; the rest of the team that assisted with comments,improvements,
+% oversight
+% and remarks etc in meetings will go always
+% as co-author. \\ co-author theorists if any\\
+% to qualify as a primary author one (or more)
+% of the following needs to be true
+% 1. Was this work initiated by me?
+% 2. Did I do most of the work to produce the results of this note?
+% 3. Did I write most of this note?
+% 4. Did I have a breakthrough idea  that raised the knowledge and scientific value of this note?
+% If you answer yes to any of this you are a primary author
+%
+% If there are less than 4 primary authors they go by seniority starting from the students;
+% If there are more than 4 primary authors
+% there are two options:
+%  put them also in alphabetical order  (prefered for the ratio notes e.g.
+% where even if we split them there is more than 4 authors)
+%% Note  since these are not CMS public documents the
+%% authorlist ordering is for motivation and reward within the
+%% working team.
+\begin{abstract}
+Results from the September 2018 CERN H4 test beam, where LYSO crystal bars, read out by pairs of SiPM's, were exposed to a beam of positively-charged pions with 80 GeV of energy, are discussed. The bars respresent a possible design of the Barrel Timing Detector, in the context of the upgrade of the CMS detector in view of the High Luminosity phase of the Large Hadron Collider. We show that a timing resolution better than the target of 30~ps is achieved with various crystal-SiPM configurations. \end{abstract} 
+\end{titlepage}
+\tableofcontents
+\newpage
+
+\clearpage
+\nocite{*}
+%\bibliographystyle{siam}
+%\bibliographystyle{unsrt-fr}
+\bibliographystyle{is-unsrt}
+\bibliography{Bibliography}
+\end{document}
